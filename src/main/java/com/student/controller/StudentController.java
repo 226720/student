@@ -6,8 +6,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,6 +45,23 @@ public class StudentController {
 		return new ResponseEntity<>(stud,HttpStatus.CREATED);
 		
 	}
+	@PutMapping
+	@Operation(summary = "student", description = " update student details")
+	public ResponseEntity<Student> updateStudent(@RequestBody Student student){
+		log.info("entered adding student controller");
+		Student stud = studentService.updateStudent(student);	
+		return new ResponseEntity<>(stud,HttpStatus.CREATED);
+		
+	}
+
+	@PatchMapping("{division},{id}")
+	@Operation(summary = "student", description = " update student details")
+	public ResponseEntity<Student> updateDivision(@PathVariable String division, @PathVariable Integer id){
+		log.info("entered adding student controller");
+		Student stud = studentService.updateDivision(division, id);	
+		return new ResponseEntity<>(stud,HttpStatus.CREATED);
+	}
+	
 	 @RequestMapping("/error")
 	    public String handleError() {
 	        // Customize the error message or redirect to another page
