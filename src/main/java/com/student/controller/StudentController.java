@@ -50,7 +50,7 @@ public class StudentController {
 	public ResponseEntity<Student> updateStudent(@RequestBody Student student){
 		log.info("entered adding student controller");
 		Student stud = studentService.updateStudent(student);	
-		return new ResponseEntity<>(stud,HttpStatus.CREATED);
+		return new ResponseEntity<>(stud,HttpStatus.OK);
 		
 	}
 
@@ -59,7 +59,7 @@ public class StudentController {
 	public ResponseEntity<Student> updateDivision(@PathVariable String division, @PathVariable Integer id){
 		log.info("entered adding student controller");
 		Student stud = studentService.updateDivision(division, id);	
-		return new ResponseEntity<>(stud,HttpStatus.CREATED);
+		return new ResponseEntity<>(stud,HttpStatus.OK);
 	}
 	
 	 @RequestMapping("/error")
